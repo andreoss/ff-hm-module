@@ -74,14 +74,14 @@
     Block = [ "lenta.ru" ];
   };
   UserMessaging = {
-    WhatsNew  = true;
+    WhatsNew = true;
     ExtensionRecommendations = false;
     FeatureRecommendations = false;
-    UrlbarInterventions  = false;
-    SkipOnboarding  = true;
-    MoreFromMozilla  = false;
-    FirefoxLabs  = true;
-    Locked  = false;
+    UrlbarInterventions = false;
+    SkipOnboarding = true;
+    MoreFromMozilla = false;
+    FirefoxLabs = true;
+    Locked = false;
   };
   SupportMenu = {
     Title = "Github Project";
@@ -101,15 +101,14 @@
       "Twitter"
     ];
     Add = [
-     "Add": [
-        {
-            Name = "Яндекс";
-            URLTemplate = "https://yandex.ru/search/?text={searchTerms}";
-            Method = "GET";
-            IconURL = "https://yandex.ru/favicon.ico";
-            Alias = "ya";
-            SuggestURLTemplate = "https://suggest.yandex.ru/suggest-ff.cgi?part={searchTerms}";
-        }
+      {
+        Name = "Яндекс";
+        URLTemplate = "https://yandex.ru/search/?text={searchTerms}";
+        Method = "GET";
+        IconURL = "https://yandex.ru/favicon.ico";
+        Alias = "ya";
+        SuggestURLTemplate = "https://suggest.yandex.ru/suggest-ff.cgi?part={searchTerms}";
+      }
     ];
   };
   FirefoxSuggest = {
