@@ -1,5 +1,6 @@
-{ config, ... }: {
-  "security.cert_pinning.enforcement_level" = 0; # MITM allowed for Privoxy
+{ config, ... }:
+{
+  "security.cert_pinning.enforcement_level" = 1;
   "accessibility.force_disabled" = 1;
   "browser.cache.disk.enable" = false;
   "browser.cache.offline.enable" = false;
@@ -22,4 +23,5 @@
   "font.name.monospace.x-western" = "Terminus";
   "font.name.sans-serif.x-western" = "Terminus";
   "font.name.serif.x-western" = "Terminus";
+  "browser.translations.panelShown" = false;
 }

@@ -1,11 +1,21 @@
-{ config, ... }: {
+{ config, ... }:
+{
   SearchBar = "separate";
   AppUpdateURL = "file:///dev/null";
   CaptivePortal = false;
   NoDefaultBookmarks = true;
+  BlockAboutSupport = true;
+  BlockAboutProfiles = true;
   DisableBuiltinPDFViewer = true;
-  PDFjs = { Enabled = false; };
-  Permissions = { Locked = true; };
+  DisplayMenuBar = "never";
+  DisplayBookmarksToolbar = "never";
+  AutofillAddressEnabled = false;
+  PDFjs = {
+    Enabled = false;
+  };
+  Permissions = {
+    Locked = true;
+  };
   PictureInPicture = {
     Enabled = false;
     Locked = true;
@@ -48,25 +58,31 @@
       "https://addons.mozilla.org/firefox/downloads/latest/external-application/"
     ];
   };
-  ExtensionSettings = { "*" = { installation_mode = "force_installed"; }; };
+  ExtensionSettings = {
+    "*" = {
+      installation_mode = "force_installed";
+    };
+  };
   NetworkPrediction = false;
   NewTabPage = false;
   OverrideFirstRunPage = "";
   OfferToSaveLogins = false;
   PasswordManagerEnabled = false;
   SearchSuggestEnabled = false;
-  SanitizeOnShutdown = {
-    Cache = true;
-    Cookies = true;
-    Downloads = true;
-    FormData = true;
-    History = true;
-    Sessions = true;
-    SiteSettings = true;
-    OfflineApps = true;
-    Locked = true;
+  SanitizeOnShutdown = true;
+  WebsiteFilter = {
+    Block = [ "lenta.ru" ];
   };
-  WebsiteFilter = { Block = [ "lenta.ru" ]; };
+  UserMessaging = {
+    WhatsNew  = true;
+    ExtensionRecommendations = false;
+    FeatureRecommendations = false;
+    UrlbarInterventions  = false;
+    SkipOnboarding  = true;
+    MoreFromMozilla  = false;
+    FirefoxLabs  = true;
+    Locked  = false;
+  };
   SupportMenu = {
     Title = "Github Project";
     URL = "https://github.com/andreoss/ff-hm-module";
@@ -76,8 +92,25 @@
   SearchEngines = {
     PreventInstalls = true;
     Default = "DuckDuckGo";
-    Remove = [ "Google" "Bing" "Amazon.com" "Amazon.es" "eBay" "Twitter" ];
-    Add = [ ];
+    Remove = [
+      "Google"
+      "Bing"
+      "Amazon.com"
+      "Amazon.es"
+      "eBay"
+      "Twitter"
+    ];
+    Add = [
+     "Add": [
+        {
+            Name = "Яндекс";
+            URLTemplate = "https://yandex.ru/search/?text={searchTerms}";
+            Method = "GET";
+            IconURL = "https://yandex.ru/favicon.ico";
+            Alias = "ya";
+            SuggestURLTemplate = "https://suggest.yandex.ru/suggest-ff.cgi?part={searchTerms}";
+        }
+    ];
   };
   FirefoxSuggest = {
     "WebSuggestions" = false;
@@ -85,6 +118,9 @@
     "ImproveSuggest" = false;
     "Locked" = true;
   };
+  TranslateEnabled = false;
+  ShowHomeButton = false;
+  LegacyProfiles = true;
   Homepage = {
     Locked = true;
     URL = config.home.firefox.homePage;
