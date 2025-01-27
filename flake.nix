@@ -84,8 +84,8 @@
                   profiles = {
                     "p" = minimal 1;
                     "s" = minimal 2;
-                    "b" = minimal 2;
-                    "c" = minimal 4;
+                    "b" = minimal 3;
+                    "c" = minimal 4
                     "e" = minimal 5;
                     "x" = minimal 6;
                     "default" = {
