@@ -49,110 +49,131 @@
               };
               packages = with pkgs; [ ];
             };
-            programs = {
-              browserpass = {
-                enable = config.programs.password-store.enable;
-                browsers = [ "firefox" ];
-              };
-              aria2 = {
-                enable = true;
-                settings = {
-                  bt-save-metadata = true;
-                  seed-time = 0;
-                  seed-ratio = 0.0;
-                };
-              };
-
-              firefox = lib.mkIf config.home.firefox.enable {
-                enable = true;
-                profiles."default" = {
-                  id = 0;
-                  extraConfig = builtins.readFile "${user-js}/user.js";
+            programs =
+              let
+                minimal = n: {
+                  id = n;
                   settings = import ./common-settings.nix {
                     config = config;
                     pkgs = pkgs;
                   };
                   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-                    passff
                     brotab
                     ublock-origin
-                    umatrix
-                    decentraleyes
-                    i-auto-fullscreen
-                    browserpass
-                    localcdn
-                    temporary-containers
                     tridactyl
-                    istilldontcareaboutcookies
+                    browserpass
                   ];
-                  containers = {
-                    "Work I" = {
-                      color = "blue";
-                      icon = "briefcase";
-                      id = 1;
-                    };
-                    "Work II" = {
-                      color = "red";
-                      icon = "briefcase";
-                      id = 2;
-                    };
-                    "Work III" = {
-                      color = "purple";
-                      icon = "briefcase";
-                      id = 3;
-                    };
-                    "Work IV" = {
-                      color = "yellow";
-                      icon = "briefcase";
-                      id = 5;
-                    };
-                    Edu = {
-                      color = "yellow";
-                      icon = "chill";
-                      id = 6;
-                    };
-                    Media = {
-                      color = "red";
-                      icon = "chill";
-                      id = 7;
-                    };
-                    Dangerous = {
-                      color = "red";
-                      icon = "fruit";
-                      id = 1000;
+                };
+              in
+              {
+                browserpass = {
+                  enable = config.programs.password-store.enable;
+                  browsers = [ "firefox" ];
+                };
+                aria2 = {
+                  enable = true;
+                  settings = {
+                    bt-save-metadata = true;
+                    seed-time = 0;
+                    seed-ratio = 0.0;
+                  };
+                };
+                firefox = lib.mkIf config.home.firefox.enable {
+                  enable = true;
+                  profile = {
+                    "p" = minimal 1;
+                    "s" = minimal 2;
+                    "b" = minimal 2;
+                    "c" = minimal 3;
+                    "e" = minimal 4;
+                    "x" = minimal 4;
+                    "default" = {
+                      id = 0;
+                      extraConfig = builtins.readFile "${user-js}/user.js";
+                      settings = import ./common-settings.nix {
+                        config = config;
+                        pkgs = pkgs;
+                      };
+                      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                        brotab
+                        ublock-origin
+                        umatrix
+                        decentraleyes
+                        i-auto-fullscreen
+                        browserpass
+                        localcdn
+                        temporary-containers
+                        tridactyl
+                        istilldontcareaboutcookies
+                      ];
+                      containers = {
+                        "Work I" = {
+                          color = "blue";
+                          icon = "briefcase";
+                          id = 1;
+                        };
+                        "Work II" = {
+                          color = "red";
+                          icon = "briefcase";
+                          id = 2;
+                        };
+                        "Work III" = {
+                          color = "purple";
+                          icon = "briefcase";
+                          id = 3;
+                        };
+                        "Work IV" = {
+                          color = "yellow";
+                          icon = "briefcase";
+                          id = 5;
+                        };
+                        Edu = {
+                          color = "yellow";
+                          icon = "chill";
+                          id = 6;
+                        };
+                        Media = {
+                          color = "red";
+                          icon = "chill";
+                          id = 7;
+                        };
+                        Dangerous = {
+                          color = "red";
+                          icon = "fruit";
+                          id = 1000;
+                        };
+                      };
+                      search = import ./search.nix {
+                        config = config;
+                        pkgs = pkgs;
+                      };
+                      bookmarks = [
+                        {
+                          name = "wikipedia";
+                          tags = [ "wiki" ];
+                          keyword = "wiki";
+                          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+                        }
+                        {
+                          name = "kernel.org";
+                          url = "https://www.kernel.org";
+                        }
+                      ];
                     };
                   };
-                  search = import ./search.nix {
+                  package =
+                    with pkgs;
+                    (firefox-esr.override {
+                      extraNativeMessagingHosts = [
+                        browserpass
+                      ];
+                    });
+                  policies = import ./policies.nix {
                     config = config;
                     pkgs = pkgs;
                   };
-                  bookmarks = [
-                    {
-                      name = "wikipedia";
-                      tags = [ "wiki" ];
-                      keyword = "wiki";
-                      url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-                    }
-                    {
-                      name = "kernel.org";
-                      url = "https://www.kernel.org";
-                    }
-                  ];
-                };
-                package =
-                  with pkgs;
-                  (firefox-esr.override {
-                    extraNativeMessagingHosts = [
-                      passff-host
-                      browserpass
-                    ];
-                  });
-                policies = import ./policies.nix {
-                  config = config;
-                  pkgs = pkgs;
                 };
               };
-            };
           };
         };
     }
