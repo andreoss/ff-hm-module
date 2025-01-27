@@ -80,7 +80,7 @@
                 };
                 firefox = lib.mkIf config.home.firefox.enable {
                   enable = true;
-                  profile = {
+                  profiles = {
                     "p" = minimal 1;
                     "s" = minimal 2;
                     "b" = minimal 2;
