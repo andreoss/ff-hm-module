@@ -84,9 +84,9 @@
                     "p" = minimal 1;
                     "s" = minimal 2;
                     "b" = minimal 2;
-                    "c" = minimal 3;
-                    "e" = minimal 4;
-                    "x" = minimal 4;
+                    "c" = minimal 4;
+                    "e" = minimal 5;
+                    "x" = minimal 6;
                     "default" = {
                       id = 0;
                       extraConfig = builtins.readFile "${user-js}/user.js";
