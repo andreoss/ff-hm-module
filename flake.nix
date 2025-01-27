@@ -58,6 +58,7 @@
                     pkgs = pkgs;
                   };
                   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                    solarized_fox
                     brotab
                     ublock-origin
                     tridactyl
