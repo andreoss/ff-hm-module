@@ -162,13 +162,7 @@
                       ];
                     };
                   };
-                  package =
-                    with pkgs;
-                    (firefox-esr.override {
-                      extraNativeMessagingHosts = [
-                        browserpass
-                      ];
-                    });
+                  package = with pkgs; firefox-esr;
                   policies = import ./policies.nix {
                     config = config;
                     pkgs = pkgs;
