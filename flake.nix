@@ -152,18 +152,21 @@
                         config = config;
                         pkgs = pkgs;
                       };
-                      bookmarks = [
-                        {
-                          name = "wikipedia";
-                          tags = [ "wiki" ];
-                          keyword = "wiki";
-                          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-                        }
-                        {
-                          name = "kernel.org";
-                          url = "https://www.kernel.org";
-                        }
-                      ];
+                      bookmarks = {
+                        force = true;
+                        Settings = [
+                          {
+                            name = "wikipedia";
+                            tags = [ "wiki" ];
+                            keyword = "wiki";
+                            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+                          }
+                          {
+                            name = "kernel.org";
+                            url = "https://www.kernel.org";
+                          }
+                        ];
+                      };
                     };
                   };
                   package = with pkgs; firefox-esr;
