@@ -49,13 +49,13 @@
       "https://addons.mozilla.org/firefox/downloads/latest/browserpass-ce"
       "https://addons.mozilla.org/firefox/downloads/latest/containerise"
       "https://addons.mozilla.org/firefox/downloads/latest/decentraleyes"
+      "https://addons.mozilla.org/firefox/downloads/latest/external-application/"
+      "https://addons.mozilla.org/firefox/downloads/latest/greasemonkey"
+      "https://addons.mozilla.org/firefox/downloads/latest/tab-reloader"
       "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim"
       "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin"
       "https://addons.mozilla.org/firefox/downloads/latest/umatrix"
-      "https://addons.mozilla.org/firefox/downloads/latest/tab-reloader"
       "https://addons.mozilla.org/firefox/downloads/latest/windows-xp-internet-browser"
-      "https://addons.mozilla.org/firefox/downloads/latest/greasemonkey"
-      "https://addons.mozilla.org/firefox/downloads/latest/external-application/"
     ];
   };
   ExtensionSettings = {
