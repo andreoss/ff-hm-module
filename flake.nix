@@ -80,7 +80,10 @@
                   };
                 };
                 firefox = lib.mkIf config.home.firefox.enable {
-                  languagePacks = [ "ru-RU" ];
+                  languagePacks = [
+                    "ru-RU"
+                    "en-GB"
+                  ];
                   enable = true;
                   profiles = {
                     "p" = minimal 1;
