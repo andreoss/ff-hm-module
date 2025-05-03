@@ -111,12 +111,6 @@
       }
     ];
   };
-  FirefoxSuggest = {
-    "WebSuggestions" = false;
-    "SponsoredSuggestions" = false;
-    "ImproveSuggest" = false;
-    "Locked" = true;
-  };
   TranslateEnabled = false;
   ShowHomeButton = false;
   LegacyProfiles = true;
@@ -124,5 +118,21 @@
     Locked = true;
     URL = config.home.firefox.homePage;
     StartPage = "homepage-locked";
+  };
+  FirefoxHome = {
+    Search = false;
+    TopSites = false;
+    SponsoredTopSites = false;
+    Highlights = false;
+    Pocket = false;
+    SponsoredPocket = false;
+    Snippets = false;
+    Locked = true;
+  };
+  FirefoxSuggest = {
+    WebSuggestions = false;
+    SponsoredSuggestions = false;
+    ImproveSuggest = false;
+    Locked = true;
   };
 }
