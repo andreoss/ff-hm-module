@@ -53,11 +53,10 @@
               let
                 minimal = n: {
                   id = n;
-                  settings = import ./common-settings.nix {
-                    config = config;
-                    pkgs = pkgs;
-                  };
+                  settings = import ./common-settings.nix;
                   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                    umatrix
+                    tree-style-tab
                     solarized_fox
                     brotab
                     ublock-origin
@@ -86,12 +85,6 @@
                   ];
                   enable = true;
                   profiles = {
-                    "p" = minimal 1;
-                    "s" = minimal 2;
-                    "b" = minimal 3;
-                    "c" = minimal 4;
-                    "e" = minimal 5;
-                    "x" = minimal 6;
                     "default" = {
                       id = 0;
                       bookmarks = {
@@ -109,10 +102,7 @@
                           }
                         ];
                       };
-                      settings = import ./common-settings.nix {
-                        config = config;
-                        pkgs = pkgs;
-                      };
+                      settings = (import ./common-settings.nix { });
                       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
                         brotab
                         ublock-origin
@@ -125,6 +115,7 @@
                         tridactyl
                         istilldontcareaboutcookies
                       ];
+                      containersForce = true;
                       containers = {
                         "Work I" = {
                           color = "blue";
