@@ -36,7 +36,7 @@
   DisableSetDesktopBackground = true;
   DisableSystemAddonUpdate = true;
   DisableTelemetry = true;
-  Bookmarks = [ ];
+  SkipTermsOfUse = true;
   Extensions = {
     "Uninstall" = [
       "google@search.mozilla.org"
@@ -68,19 +68,30 @@
   OverrideFirstRunPage = "";
   OfferToSaveLogins = false;
   PasswordManagerEnabled = false;
+  SanitizeOnShutdown = {
+    Cache = false;
+    Cookies = false;
+    FormData = false;
+    History = false;
+    Sessions = false;
+    SiteSettings = false;
+    Locked = true;
+  };
   SearchSuggestEnabled = false;
-  SanitizeOnShutdown = true;
   WebsiteFilter = {
     Block = [ "lenta.ru" ];
   };
+  ContentAnalysis = {
+    Enabled = false;
+  };
   UserMessaging = {
-    WhatsNew = true;
+    WhatsNew = false;
     ExtensionRecommendations = false;
     FeatureRecommendations = false;
     UrlbarInterventions = false;
     SkipOnboarding = true;
     MoreFromMozilla = false;
-    FirefoxLabs = true;
+    FirefoxLabs = false;
     Locked = false;
   };
   SupportMenu = {
@@ -111,12 +122,6 @@
       }
     ];
   };
-  FirefoxSuggest = {
-    "WebSuggestions" = false;
-    "SponsoredSuggestions" = false;
-    "ImproveSuggest" = false;
-    "Locked" = true;
-  };
   TranslateEnabled = false;
   ShowHomeButton = false;
   LegacyProfiles = true;
@@ -124,5 +129,21 @@
     Locked = true;
     URL = config.home.firefox.homePage;
     StartPage = "homepage-locked";
+  };
+  FirefoxHome = {
+    Search = false;
+    TopSites = false;
+    SponsoredTopSites = false;
+    Highlights = false;
+    Pocket = false;
+    SponsoredPocket = false;
+    Snippets = false;
+    Locked = true;
+  };
+  FirefoxSuggest = {
+    WebSuggestions = false;
+    SponsoredSuggestions = false;
+    ImproveSuggest = false;
+    Locked = true;
   };
 }
