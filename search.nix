@@ -3,11 +3,7 @@
   force = true;
   default = "ddg";
   privateDefault = "ddg";
-  order = [
-    "ddg"
-    "ya"
-  ];
-  force = true;
+  order = ["ddg" "ya";
   engines = {
     bing.metaData.hidden = true;
     google.metaData.hidden = true;
