@@ -9,7 +9,19 @@
   DisableBuiltinPDFViewer = true;
   DisplayMenuBar = "never";
   DisplayBookmarksToolbar = "never";
+  AutofillCreditCardEnabled = false;
   AutofillAddressEnabled = false;
+  DontCheckDefaultBrowser = true;
+  EnableTrackingProtection = {
+    Value = true;
+    Locked = true;
+    Cryptomining = true;
+    Fingerprinting = true;
+    EmailTracking = true;
+  };
+  DNSOverHTTPS = {
+    Enabled = false;
+  };
   PDFjs = {
     Enabled = false;
   };
@@ -27,7 +39,7 @@
   DisableForgetButton = true;
   DisableFormHistory = true;
   DisableMasterPasswordCreation = true;
-  DisablePasswordReveal = true;
+  DisablePasswordReveal = false;
   DisablePocket = true;
   DisablePrivateBrowsing = true;
   DisableProfileImport = true;
@@ -52,7 +64,6 @@
       "https://addons.mozilla.org/firefox/downloads/latest/external-application/"
       "https://addons.mozilla.org/firefox/downloads/latest/greasemonkey"
       "https://addons.mozilla.org/firefox/downloads/latest/tab-reloader"
-      "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim"
       "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin"
       "https://addons.mozilla.org/firefox/downloads/latest/umatrix"
       "https://addons.mozilla.org/firefox/downloads/latest/windows-xp-internet-browser"
@@ -66,6 +77,7 @@
   NetworkPrediction = false;
   NewTabPage = false;
   OverrideFirstRunPage = "";
+  OverridePostUpdatePage = "";
   OfferToSaveLogins = false;
   PasswordManagerEnabled = false;
   SanitizeOnShutdown = {
@@ -78,8 +90,9 @@
     Locked = true;
   };
   SearchSuggestEnabled = false;
+
   WebsiteFilter = {
-    Block = [ "lenta.ru" ];
+    Block = [ "*://lenta.ru/*" ];
   };
   ContentAnalysis = {
     Enabled = false;
@@ -146,4 +159,56 @@
     ImproveSuggest = false;
     Locked = true;
   };
+  "Permissions" = {
+    "Camera" = {
+      "Allow" = [ ];
+      "Block" = [ ];
+      "BlockNewRequests" = true;
+      "Locked" = true;
+    };
+    "Microphone" = {
+      "Allow" = [ ];
+      "Block" = [ ];
+      "BlockNewRequests" = true;
+      "Locked" = true;
+    };
+    "Location" = {
+      "Allow" = [ ];
+      "Block" = [ ];
+      "BlockNewRequests" = true;
+      "Locked" = true;
+    };
+    "Notifications" = {
+      "Allow" = [ ];
+      "Block" = [ ];
+      "BlockNewRequests" = true;
+      "Locked" = true;
+    };
+    "Autoplay" = {
+      "Allow" = [ ];
+      "Block" = [ ];
+      "Default" = "block-audio-video";
+      "Locked" = true;
+    };
+  };
+  Preferences = {
+    "security.ssl.errorReporting.enabled" = {
+      "Value" = false;
+      "Status" = "locked";
+    };
+    "accessibility.force_disabled" = {
+      "Value" = 1;
+      "Status" = "locked";
+      "Type" = "number";
+    };
+    "browser.tabs.warnOnClose" = {
+      "Value" = false;
+      "Status" = "locked";
+    };
+    "geo.enabled" = {
+      "Value" = false;
+      "Status" = "locked";
+    };
+  };
+  PromptForDownloadLocation = false;
 }
