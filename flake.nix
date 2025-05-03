@@ -94,12 +94,26 @@
                     "x" = minimal 6;
                     "default" = {
                       id = 0;
-                      extraConfig = builtins.readFile "${user-js}/user.js";
+                      bookmarks = {
+                        force = true;
+                        settings = [
+                          {
+                            name = "wikipedia";
+                            tags = [ "wiki" ];
+                            keyword = "wiki";
+                            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+                          }
+                          {
+                            name = "kernel.org";
+                            url = "https://www.kernel.org";
+                          }
+                        ];
+                      };
                       settings = import ./common-settings.nix {
                         config = config;
                         pkgs = pkgs;
                       };
-                      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
                         brotab
                         ublock-origin
                         umatrix
@@ -151,21 +165,6 @@
                       search = import ./search.nix {
                         config = config;
                         pkgs = pkgs;
-                      };
-                      bookmarks = {
-                        force = true;
-                        Settings = [
-                          {
-                            name = "wikipedia";
-                            tags = [ "wiki" ];
-                            keyword = "wiki";
-                            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-                          }
-                          {
-                            name = "kernel.org";
-                            url = "https://www.kernel.org";
-                          }
-                        ];
                       };
                     };
                   };
