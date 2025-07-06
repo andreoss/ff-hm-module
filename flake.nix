@@ -160,10 +160,14 @@
                     };
                   };
                   package = with pkgs; firefox-esr;
-                  policies = import ./policies.nix {
-                    config = config;
-                    pkgs = pkgs;
-                  };
+                  policies =
+                    import ./policies.nix {
+                      config = config;
+                      pkgs = pkgs;
+                    }
+                    // {
+                      NoDefaultBookmarks = lib.mkDefault true;
+                    };
                 };
               };
           };
